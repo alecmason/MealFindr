@@ -1,4 +1,3 @@
-from logging.config import _LoggerConfiguration
 from unicodedata import name
 from django.db import models
 from django.forms import CharField
