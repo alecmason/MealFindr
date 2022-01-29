@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Eatery Details</h1>
+<div>
+<p>Location: {{ eatery.location }}</p>
+<p>Description: {{ eatery.description }}</p>
+<p>Give Back Service: {{ eatery.givebackService }}</p>
+<p>Covid Protocol: {{ eatery.covidProtocol }}</p>
+</div>
+{% endblock %}

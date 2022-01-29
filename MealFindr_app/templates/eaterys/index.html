@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Eatery List</h1>
+
+{% for eatery in eaterys %}
+<div>
+<a href='/eaterys/{{ eatery.id }}'><span>{{ eatery.name }}</span>
+<p>Location: {{ eatery.location }}</p>
+<p>Description: {{ eatery.description }}</p>
+<p>Give Back Service: {{ eatery.givebackService }}</p>
+<p>Covid Protocol: {{ eatery.covidProtocol }}</p>
+</a>
+<br><br>
+</div>
+{% endfor %}
+{% endblock %}
