@@ -26,7 +26,6 @@ class Eatery(models.Model):
 
 class Comment(models.Model):
     text = models.TextField(max_length=500)
-    # default = '',
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
