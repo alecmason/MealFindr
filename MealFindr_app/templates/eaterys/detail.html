@@ -9,10 +9,12 @@
         <p>Give Back Service: {{ eatery.givebackService }}</p>
         <p>Covid Protocol: {{ eatery.covidProtocol }}</p>
       </div>
+      {% if eatery.user == request.user %}
       <div class="card-action">
-          <a href="{% url 'eaterys_update' eatery.id%}">Edit</a>
-          <a href="{% url 'eaterys_delete' eatery.id%}">Delete</a>
+        <a href="{% url 'eaterys_update' eatery.id%}">Edit</a>
+        <a href="{% url 'eaterys_delete' eatery.id%}">Delete</a>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>
