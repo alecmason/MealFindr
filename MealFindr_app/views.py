@@ -65,3 +65,18 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+
+class CommentCreate(CreateView):
+    model = Comment
+    fields = '__all__'
+
+
+# class ToyUpdate(UpdateView):
+#     model = Toy
+#     fields = ['name', 'color']
+
+
+# class ToyDelete(DeleteView):
+#     model = Toy
+#     success_url = '/toys/'
