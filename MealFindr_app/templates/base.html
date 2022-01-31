@@ -1,24 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="static/style.css" />
     <title>MealFindr</title>
     <!-- Stylesheets and scripts will go here -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" 
+      rel="stylesheet" 
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
     <header>
       <nav>
-        <div>
-          <ul class="navlist">
-            <li>
-              <a href="/">MealFindr</a>
-            </li>
-          </ul>
-          <ul class="navlist">
-            <li><a href="/about/">About MealFindr</a></li>
+        <div class="nav-wrapper red accent-4">
+          <section>
+            <ul class="navlist left">
+              <li>
+                <a href="/" class="brand-logo">MealFindr</a>
+              </li>
+            </ul>
+          </section>
+          <ul class="navlist right">
+            <li><a href="{% url 'about' %}">About MealFindr</a></li>
             <li><a href="/eaterys">List of Locations</a></li>
             <li>Add A Location</li>
           </ul>
@@ -27,10 +39,10 @@
     </header>
     <!-- Main Block, to be accessed via partials -->
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer>
-      <!-- Footer content goes here
-        We should decide if we want any text in the footer
-        otherwise it can be a solid bar -->
+    <footer class="page-footer red accent-4">
+      <div class="right">
+        All Rights Reserved, &copy; 2022 Team Lentil &nbsp;
+      </div>
     </footer>
   </body>
 </html>

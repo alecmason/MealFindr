@@ -1,34 +1,18 @@
+html {
+    font-family: "Architects Daughter", GillSans, Calibri, Trebuchet, sans-serif;
+}
+
 body {
-    margin: 0;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 50px 1fr 50px;
-    grid-template-areas:
-        "nav"
-        "main"
-        "foot"
-}
-
-body > nav {
-    grid-area: nav;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 20px 0 30px;
-    border-bottom: 4px solid black;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-.navlist {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+main {
+    flex: 1 0 auto;
 }
 
-ul.navlist > li {
-    display: inline
-}
-
-body > main {
-    grid-area: main;
+footer.page-footer {
+    padding-top: 0;
+    text-align: right;
 }
