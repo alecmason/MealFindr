@@ -1,10 +1,24 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Eatery
 
 
 # Create your views here.
 from .models import Eatery, Comment
+
+
+class EateryCreate(CreateView):
+  model = Eatery
+  fields = ['name', 'location', 'description','givebackService','covidProtocol'
+      ]
+
+class EateryUpdate(UpdateView):
+  model = Eatery
+  fields = ['name', 'location', 'description', 'givebackService', 'covidProtocol']
+
+class EateryDelete(DeleteView):
+  model = Eatery
+  success_url = '/eaterys/'
 
 def home(request):
     return render(request, 'home.html')
