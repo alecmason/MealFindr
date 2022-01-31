@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic.edit import CreateView
+from .models import Eatery
 
 
 # Create your views here.
@@ -18,3 +19,4 @@ def eaterys_index(request):
 def eaterys_detail(request, eatery_id):
     eatery = Eatery.objects.get(id=eatery_id)
     return render(request, 'eaterys/detail.html', {'eatery' : eatery})
+
