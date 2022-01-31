@@ -7,12 +7,19 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Comment(models.Model):
+    text = models.TextField(max_length=500)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 class Eatery(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
     givebackService = models.TextField(max_length=50)
     covidProtocol = models.TextField(max_length=250)
+
+    comments = models.ForeignKey(Comment)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -23,7 +30,3 @@ class Eatery(models.Model):
         return reverse('detail', kwargs={'eatery_id': self.id})
 
 
-class Comment(models.Model):
-    text = models.TextField(max_length=500)
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
