@@ -10,8 +10,8 @@
         <p>Covid Protocol: {{ eatery.covidProtocol }}</p>
       </div>
       <div class="card-action">
-          <a href=#>Edit</a>
-          <a href=#>Delete</a>
+          <a href="{% url 'eaterys_update' eatery.id%}">Edit</a>
+          <a href="{% url 'eaterys_delete' eatery.id%}">Delete</a>
       </div>
     </div>
   </div>
