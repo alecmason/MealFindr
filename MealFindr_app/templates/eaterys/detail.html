@@ -17,5 +17,37 @@
       {% endif %}
     </div>
   </div>
+  <div class="col s6">
+    
+    {% if user.is_authenticated %}
+      <form method="POST" action="{% url 'comments_create' eatery.id %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" class="btn" value="Add Comment">
+      </form>
+    {% endif %}
+    <h4>User Comments</h4>
+    <table class="striped">
+      <thead>
+        <th>Comment</th>
+        <th>User</th>
+      </thead>
+      <tbody>
+        
+        {% for comment in eatery.comment_set.all %}
+          <tr>
+            <td>{{ comment.text }}</td>
+            <td>{{ user.username }}</td>
+          </tr>
+        {% endfor %}
+          
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<script>
+  const textEl = document.getElementByID('id_text');
+  M.updateTextFields();
+</script>
 {% endblock %}

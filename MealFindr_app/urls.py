@@ -9,9 +9,9 @@ urlpatterns = [
     path('eaterys/create/', views.EateryCreate.as_view(), name='eaterys_create'),
     path('eaterys/<int:pk>/update/', views.EateryUpdate.as_view(), name='eaterys_update'),
     path('eaterys/<int:pk>/delete/', views.EateryDelete.as_view(), name='eaterys_delete'),
-    path('eaterys/<int:pk>/create/', views.CommentCreate.as_view(), name='comments_create'),
-    path('eaterys/<int:pk>/comments/<int:pk>/update/', views.CommentUpdate.as_view(), name='comments_update'),
-    path('eaterys/<int:pk>/comments/<int:pk>/delete/', views.CommentDelete.as_view(), name='comments_delete'),
+    path('eaterys/<int:eatery_id>/create/', views.create_comment, name='comments_create'),
+    # path('eaterys/<int:pk>/comments/<int:pk>/update/', views.CommentUpdate.as_view(), name='comments_update'),
+    # path('eaterys/<int:pk>/comments/<int:pk>/delete/', views.CommentDelete.as_view(), name='comments_delete'),
     path('accounts/signup/', views.signup, name='signup'),
 
 ]
