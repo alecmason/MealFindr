@@ -19,7 +19,7 @@ class Eatery(models.Model):
     givebackService = models.TextField(max_length=50)
     covidProtocol = models.TextField(max_length=250)
 
-    comments = models.ForeignKey(Comment)
+    comments = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -28,5 +28,3 @@ class Eatery(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'eatery_id': self.id})
-
-
