@@ -72,11 +72,11 @@ class CommentCreate(CreateView):
     fields = '__all__'
 
 
-# class ToyUpdate(UpdateView):
-#     model = Toy
-#     fields = ['name', 'color']
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields = ['text']
 
 
-# class ToyDelete(DeleteView):
-#     model = Toy
-#     success_url = '/toys/'
+class CommentDelete(DeleteView):
+    model = Comment
+    success_url = '/eatery/eatery_id'
