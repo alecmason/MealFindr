@@ -20,3 +20,25 @@ footer.page-footer {
 h1.title{
     text-align: center;
 }
+
+h4 {
+    text-align: center;
+}
+
+div.resources {
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+img {
+    max-height: 75px;
+}
+
+.logo{
+    max-height: 75px;
+    min-width: 338px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
