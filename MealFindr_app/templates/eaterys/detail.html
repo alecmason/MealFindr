@@ -18,36 +18,46 @@
     </div>
   </div>
   <div class="col s6">
-    
     {% if user.is_authenticated %}
-      <form method="POST" action="{% url 'comments_create' eatery.id %}">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <input type="submit" class="btn" value="Add Comment">
-      </form>
+    <form method="POST" action="{% url 'comments_create' eatery.id %}">
+      {% csrf_token %} {{ comment_form.as_p }}
+      <input type="submit" class="btn" value="Add Comment" />
+    </form>
     {% endif %}
-    <h4>User Comments</h4>
-    <table class="striped">
-      <thead>
-        <th>Comment</th>
-        <th>User</th>
-      </thead>
-      <tbody>
-        
-        {% for comment in eatery.comment_set.all %}
-          <tr>
-            <td>{{ comment.text }}</td>
-            <td>{{ comment.user }}</td>
-          </tr>
-        {% endfor %}
-          
-      </tbody>
-    </table>
   </div>
 </div>
 
+<hr />
+<div class="row">
+  <h4>User Comments</h4>
+  {% if eatery.comment_set.all %}  
+  <table class="striped">
+    <thead>
+      <th>Comment</th>
+      <th>User</th>
+      <th></th>
+    </thead>
+    <tbody>
+      {% for comment in eatery.comment_set.all %}
+      <tr>
+        <td style="width: 40%">{{ comment.text }}</td>
+        <td style="width: 40%">{{ comment.user }}</td>
+
+        {% if request.user == comment.user %}
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h4>No Comments Yet</h4>
+  {% endif %}
+</div>
+
 <script>
-  const textEl = document.getElementByID('id_text');
+  const textEl = document.getElementByID("id_text");
   M.updateTextFields();
 </script>
 {% endblock %}
