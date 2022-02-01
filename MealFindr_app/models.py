@@ -30,3 +30,6 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     eatery = models.ForeignKey(Eatery, on_delete=models.CASCADE, null=True)
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'eatery_id': self.eatery.id})
