@@ -8,6 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 from .models import Eatery, Comment
+from .forms import CommentForm
 
 
 class EateryCreate(CreateView):
@@ -45,7 +46,8 @@ def eaterys_index(request):
 
 def eaterys_detail(request, eatery_id):
     eatery = Eatery.objects.get(id=eatery_id)
-    return render(request, 'eaterys/detail.html', {'eatery': eatery})
+    comment_form = CommentForm()
+    return render(request, 'eaterys/detail.html', {'eatery': eatery, 'comment_form': comment_form})
 
 def signup(request):
   error_message = ''
@@ -67,9 +69,14 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 
-class CommentCreate(CreateView):
-    model = Comment
-    fields = '__all__'
+def create_comment(request, eatery_id):
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        new_comment=form.save(commit=False)
+        new_comment.eatery_id = eatery_id
+        new_comment.user_id = request.user.id
+        new_comment.save()
+    return redirect('detail', eatery_id=eatery_id)
 
 
 class CommentUpdate(UpdateView):
