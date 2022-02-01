@@ -44,8 +44,8 @@
         <td style="width: 40%">{{ comment.user }}</td>
 
         {% if request.user == comment.user %}
-        <td><a href="#">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="{% url 'comments_update' eatery.id comment.id %}">Edit</a></td>
+        <td><a href="{% url 'comments_delete' eatery.id comment.id %}">Delete</a></td>
         {% endif %}
       </tr>
       {% endfor %}
