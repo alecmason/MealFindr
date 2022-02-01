@@ -1,5 +1,9 @@
 html {
-    font-family: "Architects Daughter", GillSans, Calibri, Trebuchet, sans-serif;
+    font-family: "Source Code Pro", "Architects Daughter", GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+.brand-logo {
+    font-family: "Architects Daughter";
 }
 
 body {
