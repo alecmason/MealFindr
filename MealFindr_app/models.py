@@ -33,3 +33,8 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'eatery_id': self.eatery.id})
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    favorite_eaterys = models.ManyToManyField(Eatery)
