@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MealFindr</title>
     <!-- Stylesheets and scripts will go here -->
-    <link 
-      rel="stylesheet" 
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" href="{% static 'style.css' %}" />
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Code+Pro:wght@400&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
@@ -29,16 +32,15 @@
           <ul class="navlist right">
             <li><a href="{% url 'about' %}">About MealFindr</a></li>
             <li><a href="{% url 'index' %}">List of Locations</a></li>
-            
+
             {% if user.is_authenticated %}
-                
+
             <li><a href="{% url 'eaterys_create' %}">Add A Location</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
             {% endif %}
-              
           </ul>
         </div>
       </nav>
