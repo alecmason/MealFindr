@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 from .models import Eatery, Comment
 from .forms import CommentForm
-
+from django.urls import reverse_lazy
 
 class EateryCreate(CreateView):
     model = Eatery
@@ -86,4 +86,6 @@ class CommentUpdate(UpdateView):
 
 class CommentDelete(DeleteView):
     model = Comment
-    success_url = '/eatery/eatery_id'
+    def get_success_url(self):
+        eateryid = self.kwargs['eatery_id']
+        return reverse_lazy('detail', kwargs={'eatery_id': eateryid})
