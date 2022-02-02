@@ -12,6 +12,8 @@ urlpatterns = [
     path('eaterys/<int:eatery_id>/create/', views.create_comment, name='comments_create'),
     path('eaterys/<int:eatery_id>/comments/<int:pk>/update/', views.CommentUpdate.as_view(), name='comments_update'),
     path('eaterys/<int:eatery_id>/comments/<int:pk>/delete/', views.CommentDelete.as_view(), name='comments_delete'),
+    path('favorites/', views.favorites_index, name='favorites_index'),
+    path('favorites/<int:eatery_id', views.add_favorite, name='add_favorite'),
     path('accounts/signup/', views.signup, name='signup'),
 
 ]

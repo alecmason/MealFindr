@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Eatery
+from django.contrib.auth.decorators import login_required
 
 from django.views.generic import ListView, DetailView
 
@@ -89,3 +90,21 @@ class CommentDelete(DeleteView):
     def get_success_url(self):
         eateryid = self.kwargs['eatery_id']
         return reverse_lazy('detail', kwargs={'eatery_id': eateryid})
+    
+@login_required
+def favorites_index(request):
+   new  = Eatery.newmanager.filter(favorites=request.user)
+   return render(request, 
+				'eaterys/favorites.html',
+				{'new':new})
+   
+@login_required
+def add_favorite(request, eatery_id):
+   fav_eatery = get_object_or_404(Eatery, id=eatery_id)
+   if fav_eatery.favorites.filter(id=request.user.id).exists():
+      fav_eatery.favorites.remove(request.user)
+   else:
+       fav_eatery.favorites.add(request.user)
+   return redirect('detail', eatery_id=eatery_id)
+                                
+                                
