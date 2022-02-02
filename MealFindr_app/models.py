@@ -40,6 +40,7 @@ class Comment(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(
         User, 
+        related_name='profile',
         on_delete=models.CASCADE,
         primary_key=True,
         )
