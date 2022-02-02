@@ -2,7 +2,6 @@
 
 {% block content %}
     <h1 class="title">Your Favorites</h1>
-    
     {% if profile.favorites.count %}
         
     {% for favorite in profile.favorites.all  %}
@@ -18,6 +17,4 @@
     {% else %}
     <h4> No Favorites Yet</h4>
     {% endif %}
-        
-        
 {% endblock %}
