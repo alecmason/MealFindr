@@ -48,8 +48,9 @@ def eaterys_index(request):
 def eaterys_detail(request, eatery_id):
     eatery = Eatery.objects.get(id=eatery_id)
     profile = request.user.profile
+    is_favorite = profile.favorites.filter(id=eatery_id)
     comment_form = CommentForm()
-    return render(request, 'eaterys/detail.html', {'eatery': eatery, 'comment_form': comment_form, 'profile':profile})
+    return render(request, 'eaterys/detail.html', {'eatery': eatery, 'comment_form': comment_form, 'is_favorite':is_favorite})
 
 def signup(request):
   error_message = ''
