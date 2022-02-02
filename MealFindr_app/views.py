@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Eatery
 from django.contrib.auth.decorators import login_required
@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
-from .models import Eatery, Comment
+from .models import Eatery, Comment, Profile
 from .forms import CommentForm
 from django.urls import reverse_lazy
 
@@ -93,10 +93,10 @@ class CommentDelete(DeleteView):
     
 @login_required
 def favorites_index(request):
-   new  = Eatery.newmanager.filter(favorites=request.user)
+   new  = Eatery.objects.get(favorites=request.user)
    return render(request, 
 				'eaterys/favorites.html',
-				{'new':new})
+				{'profile':profile})
    
 @login_required
 def add_favorite(request, eatery_id):
