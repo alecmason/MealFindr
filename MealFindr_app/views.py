@@ -93,7 +93,7 @@ class CommentDelete(DeleteView):
     
 @login_required
 def favorites_index(request):
-   new  = Eatery.objects.get(favorites=request.user)
+   profile = request.user.profile
    return render(request, 
 				'eaterys/favorites.html',
 				{'profile':profile})
