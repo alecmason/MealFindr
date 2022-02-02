@@ -47,8 +47,9 @@ def eaterys_index(request):
 
 def eaterys_detail(request, eatery_id):
     eatery = Eatery.objects.get(id=eatery_id)
+    profile = request.user.profile
     comment_form = CommentForm()
-    return render(request, 'eaterys/detail.html', {'eatery': eatery, 'comment_form': comment_form})
+    return render(request, 'eaterys/detail.html', {'eatery': eatery, 'comment_form': comment_form, 'profile':profile})
 
 def signup(request):
   error_message = ''
@@ -100,11 +101,11 @@ def favorites_index(request):
    
 @login_required
 def add_favorite(request, eatery_id):
-   fav_eatery = get_object_or_404(Eatery, id=eatery_id)
-   if fav_eatery.favorites.filter(id=request.user.id).exists():
-      fav_eatery.favorites.remove(request.user)
+   fav_eatery = get_object_or_404(Profile, user=request.user)
+   if fav_eatery.favorites.filter(id=eatery_id).exists():
+      fav_eatery.favorites.remove(eatery_id)
    else:
-       fav_eatery.favorites.add(request.user)
+       fav_eatery.favorites.add(eatery_id)
    return redirect('detail', eatery_id=eatery_id)
                                 
                                 
