@@ -1,13 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Eatery
+from django.contrib.auth.decorators import login_required
 
 from django.views.generic import ListView, DetailView
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
-from .models import Eatery, Comment
+from .models import Eatery, Comment, Profile
 from .forms import CommentForm
 from django.urls import reverse_lazy
 
@@ -46,8 +47,10 @@ def eaterys_index(request):
 
 def eaterys_detail(request, eatery_id):
     eatery = Eatery.objects.get(id=eatery_id)
+    profile = request.user.profile
+    is_favorite = profile.favorites.filter(id=eatery_id)
     comment_form = CommentForm()
-    return render(request, 'eaterys/detail.html', {'eatery': eatery, 'comment_form': comment_form})
+    return render(request, 'eaterys/detail.html', {'eatery': eatery, 'comment_form': comment_form, 'is_favorite':is_favorite})
 
 def signup(request):
   error_message = ''
@@ -89,3 +92,21 @@ class CommentDelete(DeleteView):
     def get_success_url(self):
         eateryid = self.kwargs['eatery_id']
         return reverse_lazy('detail', kwargs={'eatery_id': eateryid})
+    
+@login_required
+def favorites_index(request):
+   profile = request.user.profile
+   return render(request, 
+				'eaterys/favorites.html',
+				{'profile':profile})
+   
+@login_required
+def add_favorite(request, eatery_id):
+   fav_eatery = get_object_or_404(Profile, user=request.user)
+   if fav_eatery.favorites.filter(id=eatery_id).exists():
+      fav_eatery.favorites.remove(eatery_id)
+   else:
+       fav_eatery.favorites.add(eatery_id)
+   return redirect('detail', eatery_id=eatery_id)
+                                
+                                

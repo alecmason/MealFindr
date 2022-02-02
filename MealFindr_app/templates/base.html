@@ -36,7 +36,7 @@
             {% if user.is_authenticated %}
 
             <li><a href="{% url 'eaterys_create' %}">Add A Location</a></li>
-            <li><a href=#>Your Favorites</a></li>
+            <li><a href="{% url 'favorites_index' %}">Your Favorites</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>
