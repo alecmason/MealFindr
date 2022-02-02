@@ -29,7 +29,7 @@
               </li>
             </ul>
           </section>
-          <ul class="navlist right">
+          <ul class="navlist right hide-on-med-and-down">
             <li><a href="{% url 'about' %}">About MealFindr</a></li>
             <li><a href="{% url 'index' %}">List of Locations</a></li>
 
@@ -44,6 +44,34 @@
             {% endif %}
           </ul>
         </div>
+        <div class="nav-wrapper red accent-4 hide-on-large-only">
+          
+          <ul class="navlist">
+            <li><a href="{% url 'about' %}">About MealFindr</a></li>
+            <li><a href="{% url 'index' %}">List of Locations</a></li>
+          </ul>
+        </div>
+        <div class="nav-wrapper red accent-4 hide-on-large-only">
+          
+          <ul class="navlist">
+            {% if user.is_authenticated %}
+
+            <li><a href="{% url 'eaterys_create' %}">Add A Location</a></li>
+            <li><a href="{% url 'favorites_index' %}">Your Favorites</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="nav-wrapper red accent-4 hide-on-large-only">
+          
+          <ul class="navlist">
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          </ul>
+        </div>
+        {% endif %}
       </nav>
     </header>
     <!-- Main Block, to be accessed via partials -->
