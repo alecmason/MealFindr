@@ -44,7 +44,7 @@ class Profile(models.Model):
         primary_key=True,
         )
 
-    favorites = models.ManyToManyField(Eatery)
+    favorites = models.ManyToManyField(Eatery, blank=True)
 
     def __str__(self):
         return self.user.username
