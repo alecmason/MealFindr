@@ -44,8 +44,10 @@ class Profile(models.Model):
         primary_key=True,
         )
 
+    favorites = models.ManyToManyField(Eatery)
+
     def __str__(self):
-        return self.user
+        return self.user.username
 
     @receiver(post_save, sender=User)
     def update_profile_signal(sender, instance, created, **kwargs):
