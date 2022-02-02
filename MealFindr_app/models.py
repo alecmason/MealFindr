@@ -47,12 +47,12 @@ class Profile(models.Model):
     def __str__(self):
         return self.user
 
-@receiver(post_save, sender=User)
-def update_profile_signal(sender, instance, created, **kwargs):
-    print(sender, instance, created)
-    if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
+    @receiver(post_save, sender=User)
+    def update_profile_signal(sender, instance, created, **kwargs):
+        print(sender, instance, created)
+        if created:
+            Profile.objects.create(user=instance)
+        instance.profile.save()
 
-def get_absolute_url(self):
-    return reverse('favorites', kwargs={'profile_id': self.pk})
+    def get_absolute_url(self):
+        return reverse('favorites', kwargs={'profile_id': self.pk})
