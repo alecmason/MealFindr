@@ -46,3 +46,9 @@ img {
     display: flex;
     justify-content: center;
 }
+
+@media only screen and (max-width: 850px) {
+    div.resources {
+        flex-direction: column;
+    }
+}
