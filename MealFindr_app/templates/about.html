@@ -1,28 +1,38 @@
-{% extends 'base.html' %} {% block content %}
-<h1 class="title">Our Mission</h1>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<h1 class="title">What is MealFindr?</h1>
 <h4>
+  Since the start of the COVID19 pandemic, food insecurity in the state of
+  Washington has nearly doubled! Local Seattle Eateries have created their own
+  meal programs to help their community members. However, if you find yourself
+  or your family facing food insecurity, you may not always know where to go for
+  help. That’s where MealFindr comes in! MealFindr was created to bridge that
+  gap and provide users with a list of Seattle Eatery locations that offer a
+  free meal to those who need it.
+</h4>
+<h2 class="title">Our Mission</h2>
+<h5 class="title">
   To provide a free resource to find restaurants and locations that offer
   no-cost meals to those facing food insecurity.
-</h4>
+</h5>
 <div class="row">
-  <h4>Additional Resources</h4>
-  <div class="resources">
-    <div class="logo">
-      <a href="https://www.nourishingnetworks.net/">
-        <img src="{% static 'images/NNC+Logo+2021+minor+crop.jpg' %}" />
-      </a>
-    </div>
-    <a
-      href="https://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program">
-      <div class="logo">
-        <img src="{% static 'images/usda-logo-color.svg' %}" />
-      </div>
-    </a>
-    <div class="logo">
-      <a href="https://www.seattlefreshbucks.org/">
-        <img src="{% static 'images/freshbuckslogo.png' %}" />
-      </a>
-    </div>
-  </div>
+  <h4 class="title">Meet the Developers</h4>
+</div>
+<div class="row">
+  <a href="https://www.linkedin.com/in/alondra-maldonado09/" target="_blank"
+    ><div class="profile card col l3 m6 s12"><h5>Alondra Madonaldo</h5>
+    <img src="{% static 'images/alo-m.png' %}" class="prof-image" /></div>
+  </a>
+  <a href="https://www.linkedin.com/in/luischavezz/" target="_blank">
+    <div class="profile card col l3 m6 s12"><h5>Luis Chavez</h5>
+    <img src="{% static 'images/image-not-available-male-225x300.png' %}" class="prof-image" /></div>
+  </a>
+  <a href="https://www.linkedin.com/in/alec-jones512/" target="_blank"
+    ><div class="profile card col l3 m6 s12"><h5>Alec Jones</h5>
+    <img src="{% static 'images/alec-j.png' %}" class="prof-image" /></div>
+  </a>
+  <a href="https://www.linkedin.com/in/davidnguyen11/" target="_blank"
+    ><div class="profile card col l3 m6 s12"><h5>David Nguyen</h5>
+    <img src="{% static 'images/David_Nguyen.jpeg' %}" class="prof-image" /></div>
+  </a>
 </div>
 {% endblock %}
