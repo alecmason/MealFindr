@@ -25,6 +25,7 @@
     </div>
   </div>
   <div class="col s6">
+<<<<<<< Updated upstream
     {% if user.is_authenticated %}
     <form method="POST" action="{% url 'comments_create' eatery.id %}">
       {% csrf_token %} {{ comment_form.as_p }}
@@ -61,6 +62,25 @@
   {% else %}
   <h4>No Comments Yet</h4>
   {% endif %}
+=======
+    <form method="post" action="{% url 'comments_create' eatery.id%}"
+
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for comment in eatery.comment_set.all %}
+          <tr>
+            <td>{{ comment.text }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+>>>>>>> Stashed changes
 </div>
 
 <script>

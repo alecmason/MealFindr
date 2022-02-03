@@ -21,8 +21,13 @@ footer.page-footer {
     text-align: right;
 }
 
-h1.title{
+.title{
     text-align: center;
+}
+
+.home-title {
+    font-size: 70pt;
+    margin-bottom: 0px;
 }
 
 h4 {
@@ -47,8 +52,30 @@ img {
     justify-content: center;
 }
 
+.home-img {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.main-logo {
+    max-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media only screen and (max-width: 850px) {
     div.resources {
         flex-direction: column;
+        row-gap: 10px;
+    }
+    .home-title {
+        font-size: 50pt;
+    }
+    .main-logo {
+        max-height: 200px;
+    }
+    .main-blurb {
+        font-size: 28pt;
     }
 }
