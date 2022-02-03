@@ -14,9 +14,9 @@ from django.contrib.auth.models import User
 class Eatery(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
-    description = models.TextField(max_length=250)
-    givebackService = models.TextField(max_length=50)
-    covidProtocol = models.TextField(max_length=250)
+    description = models.TextField(max_length=500)
+    givebackService = models.TextField(max_length=500)
+    covidProtocol = models.TextField(max_length=500)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
