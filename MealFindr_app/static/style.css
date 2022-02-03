@@ -86,7 +86,18 @@ img {
     margin-bottom: 15px;
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1275px) {
+    .prof-image {
+        min-height: 150px;
+        min-width: 150px;
+        border-radius: 75px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
     div.resources {
         flex-direction: column;
         row-gap: 10px;
@@ -99,5 +110,13 @@ img {
     }
     .main-blurb {
         font-size: 28pt;
+    }
+    .prof-image {
+        min-height: 200px;
+        min-width: 200px;
+        border-radius: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
     }
 }
