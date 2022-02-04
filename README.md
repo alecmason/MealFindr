@@ -36,6 +36,10 @@
 > - Html
 > - CSS
 
+## IceBox
+> - Google Maps API
+> - Update Log Feature
+
 ## Getting Started
 > - Click [`here`](https://mealfindr.herokuapp.com/) to view MealFindr!
 > - Click [`here`](https://trello.com/b/cdVeSA2v/project-3) to view our Trello!
